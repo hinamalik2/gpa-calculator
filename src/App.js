@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import React from 'react';
+import { GPAProvider, useGPA } from './context/GPAContext';
+import Header from './components/Header';
+import HomePage from './components/HomePage';
+import GPACalculator from './components/GPACalculator';
+import CGPACalculator from './components/CGPACalculator';
 import './App.css';
+
+function AppContent() {
+  const { currentView, darkMode } = useGPA();
+
+  const renderCurrentView = () => {
+    switch (currentView) {
+      case 'gpa':
+        return <GPACalculator />;
+      case 'cgpa':
+        return <CGPACalculator />;
+      default:
+        return <HomePage />;
+    }
+  };
+
+  return (
+    <div className={darkMode ? 'dark' : ''}>
+      <div className="min-h-screen transition-colors duration-300">
+        <Header />
+        {renderCurrentView()}
+      </div>
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GPAProvider>
+      <AppContent />
+    </GPAProvider>
   );
 }
 

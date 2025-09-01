@@ -1,70 +1,157 @@
-# Getting Started with Create React App
+# GPA & CGPA Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive web application for calculating Grade Point Average (GPA) and Cumulative Grade Point Average (CGPA). Built with React, Tailwind CSS, and featuring a beautiful dark/light mode interface.
+
+## Features
+
+### GPA Calculator
+- Add multiple subjects dynamically
+- Input subject name, credit hours, and grades
+- Real-time GPA calculation using the standard formula: `GPA = (Σ (Credit × Grade Point)) ÷ (Total Credit Hours)`
+- Edit and delete subjects
+- Visual grade indicators with color coding
+- Performance feedback based on GPA ranges
+
+### CGPA Calculator  
+- Add multiple semesters with GPA and credit information
+- Automatic CGPA calculation: `CGPA = (Σ (GPA × Semester Credit Hours)) ÷ (Total Credit Hours)`
+- Semester breakdown display
+- Edit and delete semesters
+- Average GPA calculation across all semesters
+
+### Additional Features
+- **Dark/Light Mode**: Toggle between themes with smooth transitions
+- **Data Persistence**: Automatic local storage of all data
+- **PDF Export**: Download detailed reports for both GPA and CGPA calculations
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Smooth Animations**: Framer Motion animations for enhanced user experience
+- **Grade Color Coding**: 
+  - 🟢 Green: GPA ≥ 3.5 (Excellent)
+  - 🟡 Yellow: GPA 2.0-3.49 (Good)
+  - 🔴 Red: GPA < 2.0 (Needs Improvement)
+
+## Grade Scale
+
+The application uses the standard 4.0 GPA scale:
+
+| Letter Grade | Grade Points |
+|-------------|-------------|
+| A+, A       | 4.0         |
+| A-          | 3.7         |
+| B+          | 3.3         |
+| B           | 3.0         |
+| B-          | 2.7         |
+| C+          | 2.3         |
+| C           | 2.0         |
+| C-          | 1.7         |
+| D+          | 1.3         |
+| D           | 1.0         |
+| F           | 0.0         |
+
+## Tech Stack
+
+- **Frontend**: React 18
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **State Management**: React Context API with useReducer
+- **PDF Generation**: jsPDF
+- **Data Persistence**: localStorage
+- **Icons**: Heroicons (via Tailwind)
+
+## Installation & Setup
+
+1. **Clone or download the project**
+   ```bash
+   cd gpa-calculator
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000)
 
 ### `npm run build`
+Builds the app for production to the `build` folder
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm test`
+Launches the test runner in interactive watch mode
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+src/
+├── components/
+│   ├── Header.js           # Navigation header with dark mode toggle
+│   ├── HomePage.js         # Landing page with feature overview
+│   ├── GPACalculator.js    # GPA calculation interface
+│   └── CGPACalculator.js   # CGPA calculation interface
+├── context/
+│   └── GPAContext.js       # Global state management
+├── utils/
+│   └── pdfExport.js        # PDF export functionality
+├── App.js                  # Main application component
+└── index.js               # Application entry point
+```
 
-### `npm run eject`
+## Usage Guide
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Calculating GPA
+1. Navigate to "GPA Calculator" from the home page
+2. Add subjects by entering:
+   - Subject name
+   - Credit hours
+   - Letter grade
+3. View real-time GPA calculation in the results panel
+4. Edit or delete subjects as needed
+5. Export results to PDF
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Calculating CGPA
+1. Navigate to "CGPA Calculator" from the home page
+2. Add semesters by entering:
+   - Semester name (e.g., "Fall 2023")
+   - GPA for that semester
+   - Total credits for that semester
+3. View cumulative GPA calculation
+4. See semester breakdown and average GPA
+5. Export results to PDF
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Data Persistence
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+All your data is automatically saved to your browser's local storage, so you won't lose your calculations when you close the app. Data includes:
+- All subjects and their details
+- All semesters and their GPAs
+- Dark/light mode preference
 
-## Learn More
+## Browser Support
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+- Mobile browsers
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+This project follows the PRD specifications and implements all requested features. Future enhancements could include:
+- User authentication
+- Cloud data sync
+- Multiple GPA scales
+- Grade trend analysis
+- Course planning features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is open source and available under the [MIT License](LICENSE).
